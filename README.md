@@ -7,3 +7,8 @@ Jihui Ding, jihuid@stanford.edu
 ## Features:
 - Compute single parameter sensitivity and condtional parameter sensitivity (two-way parameter interaction)
 - Generate Pareto, heatmap, CDF plots using a perceptually uniform colormap
+
+![single parameter sensitivity](example_plots/Park2016_single_l1norm.png)
+![conditional parameter sensitivity](example_plots/Park2016_conditional_ASL.png)
+![conditional CDF](example_plots/Park2016_conditional_CDF.png)
+![MDS cluster](example_plots/Park2016_MDS.png)
