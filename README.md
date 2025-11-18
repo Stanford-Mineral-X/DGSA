@@ -1,17 +1,33 @@
 # Distance-based Generalized Sensitivity Analysis (DGSA)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Overview
 A Python package for performing distance-based generalized sensitivity analysis
+
 ## Authors
 Jihui Ding, jihuid@stanford.edu
-## Features
-- Compute single parameter sensitivity and condtional parameter sensitivity (two-way parameter interaction)
-- Generate Pareto, heatmap, CDF plots using a perceptually uniform colormap
 
-![single parameter sensitivity](example_plots/Park2016_single_l1norm.png)
-![conditional parameter sensitivity](example_plots/Park2016_conditional_ASL.png)
-![conditional CDF](example_plots/Park2016_conditional_CDF.png)
-![MDS cluster](example_plots/Park2016_MDS.png)
+## Features
+
+### Sensitivity Analysis
+- **Single-parameter sensitivity** computation  
+- **Conditional (two-way) parameter sensitivity** to quantify asymmetric parameter interactions
+
+### Visualization Tools
+Generates a variety of plots using perceptually uniform colormaps:
+- **Pareto plots** for sensitivity ranking
+- **Heatmaps** for conditional interactions
+- **CDF plots** for parameter distributions
+- **MDS (Multidimensional Scaling)** for clustering visualizations
+
+### Example Outputs
+Below are example plots produced using the included sample dataset:
+
+<img src="example_plots/Park2016_single_l1norm.png" width="600" alt="Single parameter sensitivity plot">
+<img src="example_plots/Park2016_conditional_ASL.png" width="600" alt="Conditional parameter sensitivity plot">
+<img src="example_plots/Park2016_conditional_CDF.png" width="500" alt="Conditional CDF plot">
+<img src="example_plots/Park2016_MDS.png" width="500" alt="MDS cluster plot">
+
 
 ## How to Use
 
