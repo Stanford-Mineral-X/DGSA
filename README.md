@@ -62,7 +62,7 @@ Jihui Ding, jihuid@stanford.edu
 
 **Methodology developed by:**
 
-Fenwick, D., Scheidt, C., & Caers, J. (2014). Quantifying asymmetric parameter interactions in sensitivity analysis: application to reservoir modeling. *Mathematical Geosciences, 46(4), 493–511.*
+Fenwick, D., Scheidt, C., & Caers, J. (2014). Quantifying asymmetric parameter interactions in sensitivity analysis: Application to reservoir modeling. *Mathematical Geosciences, 46(4), 493–511.*
 
 **Example data from:**
 
