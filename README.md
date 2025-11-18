@@ -58,7 +58,7 @@ Jihui Ding, jihuid@stanford.edu
     ├── single_cdf.py
     └── single_pareto.py
 ```
-## Acknowledgement
+## Acknowledgements
 
 **Methodology developed by:**
 
