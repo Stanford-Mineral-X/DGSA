@@ -68,7 +68,7 @@ Fenwick, D., Scheidt, C., & Caers, J. (2014). Quantifying asymmetric parameter i
 
 Park, J., Yang, G., Satija, A., Scheidt, C. and Caers, J. (2016). DGSA: A Matlab toolbox for distance-based generalized sensitivity analysis of geoscientific computer experiments. *Computers & geosciences, 97, 15-29.*
 
-**Early Implementations**
+**Previous implementations**
 
 | Version | Author | Repository |
 |--------|--------|------------|
