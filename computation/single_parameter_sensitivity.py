@@ -184,14 +184,13 @@ def compute_single_l1norm_distance_observed_and_bootstrapped(
             # calculate cluster distribution
             q_cluster = np.quantile(cluster_values, quantile_grid)
             # compute l1norm distances
-            # single_observed_l1norm_distances[p, c] = np.linalg.norm(q_prior - q_cluster, ord=1)
             single_observed_l1norm_distances[p, c] = np.sum(np.abs(q_prior - q_cluster))
 
             # perform bootstrap sampling
             # find how many points in this cluster
             n_points_cluster = clustering["n_points"][c]
-            # draw bootstrap samples from all samples with replacement
-            draw_idx = np.random.randint(0, n_samples, size=(n_points_cluster, n_draws))
+            # draw bootstrap samples from all samples without replacement
+            draw_idx = np.column_stack([np.random.choice(n_samples, size=n_points_cluster, replace=False) for _ in range(n_draws)])
             boot_samples = parameter_values[draw_idx, p] # shape (n_points_cluster, n_draws)
 
             # compute bootstrapped cdfs

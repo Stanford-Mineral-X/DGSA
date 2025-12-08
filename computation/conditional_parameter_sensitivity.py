@@ -262,8 +262,8 @@ def compute_conditional_l1norm_distance_observed_and_bootstrapped(
 
                 # perform bootstrap sampling
                 for p in range(n_params):
-                    # draw bootstrap samples from the cluster with replacement
-                    draw_idx = np.random.randint(0, n_points_cluster, size=(n_points_cluster_bin, n_draws))
+                    # draw bootstrap samples from the cluster without replacement
+                    draw_idx = np.column_stack([np.random.choice(n_points_cluster, size=n_points_cluster_bin, replace=False) for _ in range(n_draws)])
                     boot_samples = parameter_values[cluster_idx[draw_idx], p] # shape (n_points_j, n_draws)
 
                     # compute bootstrapped cdfs
