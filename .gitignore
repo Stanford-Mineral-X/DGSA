@@ -1,3 +1,6 @@
+# repo root gitignore
+# ignore all system/cache/environment files
+
 # macOS
 .DS_Store
 .AppleDouble

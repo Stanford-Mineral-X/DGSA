@@ -23,10 +23,10 @@ Generates a variety of plots using perceptually uniform colormaps:
 ### Example Outputs
 Below are example plots produced using the included sample dataset:
 
-<img src="example_plots/Park2016_single_l1norm.png" width="600" alt="Single parameter sensitivity plot">
-<img src="example_plots/Park2016_conditional_ASL.png" width="600" alt="Conditional parameter sensitivity plot">
-<img src="example_plots/Park2016_conditional_CDF.png" width="500" alt="Conditional CDF plot">
-<img src="example_plots/Park2016_MDS.png" width="500" alt="MDS cluster plot">
+<img src="results/Park2016_single_l1norm.png" width="600" alt="Single parameter sensitivity plot">
+<img src="results/Park2016_conditional_ASL.png" width="600" alt="Conditional parameter sensitivity plot">
+<img src="results/Park2016_conditional_CDF.png" width="500" alt="Conditional CDF plot">
+<img src="results/Park2016_MDS.png" width="500" alt="MDS cluster plot">
 
 
 ## How to Use
@@ -46,33 +46,37 @@ Below are example plots produced using the included sample dataset:
 ## Repository Structure
 
 ```plaintext
-├── DGSA_computation_Park2016.ipynb
-├── DGSA_visualization_Park2016.ipynb
-├── LICENSE
-├── README.md
-├── computation
-│   ├── conditional_parameter_sensitivity.py
-│   ├── kmedoids.py
-│   └── single_parameter_sensitivity.py
-├── example_data
+repo_root
+├── data
+│   ├── example_responses.csv
 │   ├── Park2016_distance_matrix.csv
-│   ├── Park2016_parameters.csv
-│   └── example_responses.csv
-├── example_plots
-│   ├── Park2016_MDS.png
+│   └── Park2016_parameters.csv
+├── notebooks
+│   ├── DGSA_computation_Park2016.ipynb
+│   └── DGSA_visualization_Park2016.ipynb
+├── results
 │   ├── Park2016_conditional_ASL.png
 │   ├── Park2016_conditional_CDF.png
+│   ├── Park2016_DGSA_results.pkl
+│   ├── Park2016_MDS.png
+│   ├── Park2016_single_ASL.png
 │   └── Park2016_single_l1norm.png
-├── example_results
-│   └── Park2016_DGSA_results.pkl
-├── utils
-│   └── DGSA_save_load.py
-└── visualization
-    ├── cluster_MDS.py
-    ├── conditional_cdf.py
-    ├── conditional_heatmap.py
-    ├── single_cdf.py
-    └── single_pareto.py
+├── src
+│   ├── computation
+│   │   ├── conditional_parameter_sensitivity.py
+│   │   ├── kmedoids.py
+│   │   └── single_parameter_sensitivity.py
+│   ├── utils
+│   │   └── DGSA_save_load.py
+│   └── visualization
+│       ├── cluster_MDS.py
+│       ├── conditional_cdf.py
+│       ├── conditional_heatmap.py
+│       ├── single_cdf.py
+│       └── single_pareto.py
+├── .gitignore
+├── LICENSE
+└── README.md
 ```
 ## Acknowledgements
 
