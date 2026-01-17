@@ -16,6 +16,7 @@ def conditional_parameter_sensitivity(
         alpha: float = 0.95, 
         n_bins: int = 3, 
         n_draws: int = 2000,
+        random_seed: int | None = None,
         method: str = 'l1norm_and_ASL'
     ) -> dict[str, NDArray[np.float64]]:
     """
@@ -48,6 +49,9 @@ def conditional_parameter_sensitivity(
 
     n_draws : int, default = 2000
         Number of bootstrap draws
+
+    random_seed : int | None, default = None
+        Random seed for bootstrap reproducibility.
 
     Returns
     -------
@@ -91,7 +95,8 @@ def conditional_parameter_sensitivity(
             clustering, 
             n_bins, 
             n_draws, 
-            alpha
+            alpha,
+            random_seed
         ) 
         
     # save sensitivity results to a dictionary
@@ -159,7 +164,8 @@ def compute_conditional_l1norm_distance_observed_and_bootstrapped(
         clustering: dict, 
         n_bins: int = 3, 
         n_draws: int = 2000,
-        alpha: float = 0.95
+        alpha: float = 0.95,
+        random_seed: int | None = None
     ) -> tuple[NDArray[np.float64], NDArray[np.float64], NDArray[np.float64]]:
     """
     For conditional parameter sensitivity: 
@@ -192,6 +198,9 @@ def compute_conditional_l1norm_distance_observed_and_bootstrapped(
     alpha : float, default = 0.95
         Quantile of the bootstrapped distribution
 
+    random_seed : int | None, default = None
+        Random seed for bootstrap reproducibility.
+
     Returns
     -------
     conditional_observed_l1norm_distances : np.ndarray of shape (n_parameters, n_clusters, n_bins)
@@ -203,6 +212,9 @@ def compute_conditional_l1norm_distance_observed_and_bootstrapped(
     conditional_boot_distance_quantiles : np.ndarray of shape (n_parameters, n_clusters, n_bins)
         The bootstrapped l1norm distances at the specified alpha-quantile for each parameter, each cluster, and each bin.
     """
+
+    # set random seed for bootstrap reproducibility
+    rng = np.random.default_rng(random_seed)
 
     # get parameters
     n_params = parameter_values.shape[1]
@@ -263,7 +275,7 @@ def compute_conditional_l1norm_distance_observed_and_bootstrapped(
                 # perform bootstrap sampling
                 for p in range(n_params):
                     # draw bootstrap samples from the cluster without replacement
-                    draw_idx = np.column_stack([np.random.choice(n_points_cluster, size=n_points_cluster_bin, replace=False) for _ in range(n_draws)])
+                    draw_idx = np.column_stack([rng.choice(n_points_cluster, size=n_points_cluster_bin, replace=False) for _ in range(n_draws)])
                     boot_samples = parameter_values[cluster_idx[draw_idx], p] # shape (n_points_j, n_draws)
 
                     # compute bootstrapped cdfs

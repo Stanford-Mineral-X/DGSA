@@ -13,6 +13,7 @@ def single_parameter_sensitivity(
     clustering: dict[str, NDArray[np.int_]],
     alpha: float = 0.95,
     n_draws: int = 2000,
+    random_seed: int | None = None,
     method: str = 'l1norm_and_ASL'
     ) -> dict[str, NDArray[np.float64]]:
     
@@ -41,6 +42,9 @@ def single_parameter_sensitivity(
     n_draws : int, default = 2000
         Number of bootstrap draws.
 
+    random_seed : int | None, default = None
+        Random seed for bootstrap reproducibility.
+
     Returns
     -------
     Single-parameter sensitivity results: dict
@@ -63,7 +67,7 @@ def single_parameter_sensitivity(
 
     # compute observed l1norm distances and perform bootstrap sampling
     l1norm_distance_observed, boot_distance_samples, boot_distance_alpha = compute_single_l1norm_distance_observed_and_bootstrapped(
-        parameter_values, clustering, n_draws, alpha) # array shape (n_parameters,n_clusters), (n_parameters,n_clusters,n_draws), (n_parameters,n_clusters)
+        parameter_values, clustering, n_draws, alpha, random_seed) # array shape (n_parameters,n_clusters), (n_parameters,n_clusters,n_draws), (n_parameters,n_clusters)
 
     # save sensitivity results to a dictionary
     sensitivity_results = {}
@@ -119,7 +123,8 @@ def compute_single_l1norm_distance_observed_and_bootstrapped(
         parameter_values: NDArray[np.float64],
         clustering: dict[str, NDArray[np.int_]],
         n_draws: int = 2000, 
-        alpha: float = 0.95
+        alpha: float = 0.95,
+        random_seed: int | None = None
         ) -> tuple[NDArray[np.float64], NDArray[np.float64], NDArray[np.float64]]:
     """
     For single parameter sensitivity: 
@@ -146,6 +151,9 @@ def compute_single_l1norm_distance_observed_and_bootstrapped(
     alpha : float, default = 0.95
         Quantile of the bootstrapped distribution.
 
+    random_seed : int | None, default = None
+        Random seed for bootstrap reproducibility.
+
     Returns
     -------
     single_observed_l1norm_distances : np.ndarray of shape (n_parameters, n_clusters)
@@ -158,6 +166,10 @@ def compute_single_l1norm_distance_observed_and_bootstrapped(
         The bootstrapped l1norm distances at the specified alpha-quantile for each parameter and each cluster
     """
 
+    # set random seed for bootstrap reproducibility
+    rng = np.random.default_rng(random_seed)
+
+    # get dimensions
     n_samples, n_params = parameter_values.shape
     n_clusters = len(clustering['medoid_indices'])
     
@@ -190,7 +202,7 @@ def compute_single_l1norm_distance_observed_and_bootstrapped(
             # find how many points in this cluster
             n_points_cluster = clustering["n_points"][c]
             # draw bootstrap samples from all samples without replacement
-            draw_idx = np.column_stack([np.random.choice(n_samples, size=n_points_cluster, replace=False) for _ in range(n_draws)])
+            draw_idx = np.column_stack([rng.choice(n_samples, size=n_points_cluster, replace=False) for _ in range(n_draws)])
             boot_samples = parameter_values[draw_idx, p] # shape (n_points_cluster, n_draws)
 
             # compute bootstrapped cdfs
