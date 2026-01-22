@@ -10,7 +10,7 @@ Jihui Ding, jihuid@stanford.edu
 ## Features
 
 ### Sensitivity Analysis
-- **Single-parameter sensitivity** computation  
+- **Single parameter sensitivity** computation  
 - **Conditional (two-way) parameter sensitivity** to quantify asymmetric parameter interactions
 
 ### Visualization Tools
