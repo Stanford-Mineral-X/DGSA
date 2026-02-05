@@ -99,7 +99,7 @@ def conditional_heatmap_standardized(
     if parameter_names.size != single_sensitivity_results['standardized'].size:
         raise ValueError("parameter_names must match the sensitivity array length.")
 
-    # sort from least sensitive to most sensitive
+    # sort from most sensitive to least sensitive (because default imshow origin is upper left)
     conditional_standardized = conditional_sensitivity_results['standardized'].copy()
     single_standardized = single_sensitivity_results['standardized'].copy()
     np.fill_diagonal(conditional_standardized,single_standardized)

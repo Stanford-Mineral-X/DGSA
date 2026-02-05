@@ -71,7 +71,7 @@ def conditional_cdf(
     except ValueError:
         raise ValueError(f'Enter correct name of conditioning parameters: {conditioning_parameter_name}')
     
-    # check if which cluster is within range
+    # check if which_cluster is within range
     n_clusters = len(clustering['medoid_indices'])
     if which_cluster < 1 or which_cluster > n_clusters:
         raise ValueError(f'which_cluster should be between 1 and {n_clusters}')
