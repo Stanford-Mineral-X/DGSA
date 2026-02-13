@@ -23,10 +23,10 @@ Generates a variety of plots using perceptually uniform colormaps:
 ### Example Outputs
 Below are example plots produced using the included sample dataset:
 
-<img src="results/Park2016_single_l1norm.png" width="600" alt="Single parameter sensitivity plot">
-<img src="results/Park2016_conditional_ASL.png" width="600" alt="Conditional parameter sensitivity plot">
-<img src="results/Park2016_conditional_CDF.png" width="500" alt="Conditional CDF plot">
-<img src="results/Park2016_MDS.png" width="500" alt="MDS cluster plot">
+<img src="results/Park2016_single_l1norm.tiff" width="600" alt="Single parameter sensitivity plot">
+<img src="results/Park2016_conditional_ASL.tiff" width="600" alt="Conditional parameter sensitivity plot">
+<img src="results/Park2016_conditional_CDF.tiff" width="500" alt="Conditional CDF plot">
+<img src="results/Park2016_MDS.tiff" width="500" alt="MDS cluster plot">
 
 
 ## How to Use

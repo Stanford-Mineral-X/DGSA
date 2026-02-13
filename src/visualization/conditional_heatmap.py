@@ -112,7 +112,7 @@ def conditional_heatmap_standardized(
         plt.rcParams['font.family'] = font
 
     # create figure and axis
-    fig, ax = plt.subplots(figsize=fig_size, constrained_layout=True)
+    fig, ax = plt.subplots(figsize=fig_size)
 
     if single_sensitivity_results['sensitivity_method'] == 'l1norm':
         vcenter, vmin, vmax = 1, 0.1, 1.9
@@ -157,5 +157,7 @@ def conditional_heatmap_standardized(
                 ax.text(c, r, "99.9+", ha='center', va='center', color='k', fontsize=font_size-2)
             else:
                 ax.text(c, r, f"{value:.1f}", ha='center', va='center', color='k', fontsize=font_size-2)
+    
+    fig.tight_layout()
     
     return fig
