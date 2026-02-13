@@ -17,7 +17,7 @@ def conditional_pareto_by_bin(
         fig_size: tuple = (10, 6),
         font_size: int = 12,
         font: str = None
-    ) -> None:
+    ) -> plt.Figure:
     """
     Make a Pareto plot showing the standardized measure of sensitivity values for each parameter and each cluster.
 
@@ -76,7 +76,8 @@ def conditional_pareto_by_bin(
 
     Returns
     -------
-    A Pareto plot showing the standardized measure of sensitivity values for each parameter and each cluster..
+    plt.Figure
+        A Pareto plot showing the standardized measure of sensitivity values for each parameter and each cluster.
     """
     
     # get dimensions
@@ -129,7 +130,7 @@ def conditional_pareto_by_bin(
         plt.rcParams['font.family'] = font
 
     # create figure and axis
-    fig, ax = plt.subplots(figsize = fig_size)
+    fig, ax = plt.subplots(figsize = fig_size, constrained_layout=True)
     ax.set_axisbelow(True)  # Put grid behind bars
     y_pos = np.arange(n_params)
     
@@ -174,7 +175,7 @@ def conditional_pareto_by_bin(
         TickToDisplay = np.array([5, 20, 50, 80, 95, 99.3, 99.95, 99.999])
         ax.set_xticks(norm.ppf(TickToDisplay/100, 2, 1))
         ax.set_xticklabels(TickToDisplay)
-
-    plt.show()
+    
+    return fig
 
 

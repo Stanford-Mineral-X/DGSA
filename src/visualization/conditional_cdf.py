@@ -19,7 +19,7 @@ def conditional_cdf(
     fig_size: tuple = (6, 4),
     font_size: int = 12,
     font: str = None
-    ) -> None:
+    ) -> plt.Figure:
     """
     Plot conditional CDFs of parameters based on conditioning parameters within a cluster
     
@@ -58,6 +58,11 @@ def conditional_cdf(
     font : str, default = None
         Font family to use (e.g. 'DejaVu Sans', 'Helvetica', 'Times New Roman').
         If None, matplotlib default is used.
+    
+    Returns
+    -------
+    plt.Figure
+        A figure showing the conditional CDFs of the specified parameters within the selected cluster.
     """
     
     # check the names of variables
@@ -96,7 +101,7 @@ def conditional_cdf(
         plt.rcParams['font.family'] = font
 
     # create figure and axis
-    fig, ax = plt.subplots(figsize = fig_size)
+    fig, ax = plt.subplots(figsize = fig_size, constrained_layout=True)
 
     # define colors for bins
     # colors = plt.cm.tab10(np.linspace(0, 1, n_clusters))
@@ -135,5 +140,5 @@ def conditional_cdf(
     ax.set_title(f'Conditional CDF from Cluster {which_cluster-1}', fontsize=font_size+2)
     ax.legend(fontsize=font_size-2)
     ax.grid(True, alpha=0.3)
-
-    plt.show()
+    
+    return fig

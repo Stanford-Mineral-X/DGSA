@@ -17,7 +17,7 @@ def single_pareto_standardized(
         fig_size: tuple = (10, 6),
         font_size: int = 12,
         font: str = None
-    ) -> None:
+    ) -> plt.Figure:
     """
     Make a Pareto plot showing the standardized measure of sensitivity values for each parameter.
 
@@ -57,7 +57,8 @@ def single_pareto_standardized(
 
     Returns
     -------
-    A Pareto plot showing the standardized measure of sensitivity values for each parameter.
+    plt.Figure
+        A Pareto plot showing the standardized measure of sensitivity values for each parameter.
     """
      # get dimensions
     n_params = len(single_sensitivity_results['standardized'])
@@ -88,7 +89,7 @@ def single_pareto_standardized(
         plt.rcParams['font.family'] = font
 
     # create figure and axis
-    fig, ax = plt.subplots(figsize = fig_size)
+    fig, ax = plt.subplots(figsize = fig_size, constrained_layout=True)
     ax.set_axisbelow(True)  # Put grid behind bars
     y_pos = np.arange(1, n_params + 1)
     
@@ -146,7 +147,7 @@ def single_pareto_standardized(
         # add reference line at alpha
         ax.axvline(x=norm.ppf(single_sensitivity_results['alpha'], loc=2, scale=1), color='black', linestyle='--', linewidth=2, alpha=0.5)
 
-    plt.show()
+    return fig
 
 
 def single_pareto_by_cluster(
@@ -156,7 +157,7 @@ def single_pareto_by_cluster(
         fig_size: tuple = (10, 6),
         font_size: int = 12,
         font: str = None
-    ) -> None:
+    ) -> plt.Figure:
     """
     Make a Pareto plot showing the standardized measure of sensitivity values for each parameter and each cluster.
 
@@ -196,7 +197,8 @@ def single_pareto_by_cluster(
 
     Returns
     -------
-    A Pareto plot showing the standardized measure of sensitivity values for each parameter and each cluster..
+    plt.Figure
+        A Pareto plot showing the standardized measure of sensitivity values for each parameter and each cluster.
     """
     
     # get dimensions
@@ -228,7 +230,7 @@ def single_pareto_by_cluster(
         plt.rcParams['font.family'] = font
 
     # create figure and axis
-    fig, ax = plt.subplots(figsize = fig_size)
+    fig, ax = plt.subplots(figsize = fig_size, constrained_layout=True)
     ax.set_axisbelow(True)  # Put grid behind bars
     y_pos = np.arange(n_params)
     
@@ -280,7 +282,7 @@ def single_pareto_by_cluster(
         # add reference line at alpha
         ax.axvline(x=norm.ppf(single_sensitivity_results['alpha'], loc=2, scale=1), color='black', linestyle='--', linewidth=2, alpha=0.5)
 
-    plt.show()
+    return fig
 
 
 def single_pareto_ci(
@@ -292,7 +294,7 @@ def single_pareto_ci(
     fig_size: tuple = (10, 6),
     font_size: int = 12,
     font: str = None
-    ) -> None:
+    ) -> plt.Figure:
     """
     Make a Pareto plot showing the standardized single-parameter sensitivity with confidence intervals.
     
@@ -325,7 +327,8 @@ def single_pareto_ci(
     
     Returns:
     --------
-    A Pareto plot showing the standardized single-parameter sensitivity with confidence intervals.
+    plt.Figure
+        A Pareto plot showing the standardized single-parameter sensitivity with confidence intervals.
     """
     # get dimensions
     n_params = len(standardized_medium_alpha)
@@ -349,7 +352,7 @@ def single_pareto_ci(
         plt.rcParams['font.family'] = font
 
     # create figure and axis
-    fig, ax = plt.subplots(figsize = fig_size)
+    fig, ax = plt.subplots(figsize = fig_size, constrained_layout=True)
     ax.set_axisbelow(True)  # Put grid behind bars
     y_pos = np.arange(1, n_params + 1)
 
@@ -376,4 +379,4 @@ def single_pareto_ci(
     # add reference line at x=1
     ax.axvline(x=1, color='black', linestyle='--', linewidth=2, alpha=0.5)
     
-    plt.show()
+    return fig

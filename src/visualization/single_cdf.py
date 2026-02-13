@@ -17,7 +17,7 @@ def single_cdf(
     fig_size: tuple = (8, 10),
     font_size: int = 12,
     font: str = None
-    ) -> None:
+    ) -> plt.Figure:
     """
     Plot cumulative distribution functions (CDFs) of parameters for each cluster
     
@@ -50,6 +50,11 @@ def single_cdf(
     font : str, default = None
         Font family to use (e.g. 'DejaVu Sans', 'Helvetica', 'Times New Roman').
         If None, matplotlib default is used.
+
+    Returns
+    -------
+    plt.Figure
+        A figure showing the CDFs of the specified parameters for each cluster.
     """
     
     # if plot_parameter_list is not specified, use all parameters
@@ -81,7 +86,7 @@ def single_cdf(
         plt.rcParams['font.family'] = font
 
     # create figure with subplots
-    fig, axes = plt.subplots(n_rows, 2, figsize=fig_size)
+    fig, axes = plt.subplots(n_rows, 2, figsize=fig_size, constrained_layout=True)
         
     # define colors for clusters
     colors = plt.cm.tab10(np.linspace(0, 1, n_clusters))
@@ -128,5 +133,4 @@ def single_cdf(
     if n_params_to_plot % 2 == 1:
         axes[-1, -1].set_visible(False)
     
-    plt.tight_layout()
-    plt.show()
+    return fig

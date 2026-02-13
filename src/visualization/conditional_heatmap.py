@@ -3,7 +3,6 @@ Make a heatmap showing the standardized sensitivity values for conditional param
 Based upon the work of Celine Scheidt and Jihoon Park.
 """
 
-from numpy.typing import NDArray
 import numpy as np
 import matplotlib.pyplot as plt
 from cmcrameri import cm
@@ -18,7 +17,7 @@ def conditional_heatmap_standardized(
     font: str = None,
     font_size: int = 12,
     show_values: bool = True
-    ) -> None:
+    ) -> plt.Figure:
     """
     Make a heatmap showing the standardized sensitivity values for conditional parameter sensitivity.
     
@@ -77,7 +76,8 @@ def conditional_heatmap_standardized(
 
     Returns
     -------
-    A heatmap showing the standardized sensitivity values for conditional parameter sensitivity.
+    plt.Figure
+        A heatmap showing the standardized sensitivity values for conditional parameter sensitivity.
     """
 
     # get dimensions
@@ -112,7 +112,7 @@ def conditional_heatmap_standardized(
         plt.rcParams['font.family'] = font
 
     # create figure and axis
-    fig, ax = plt.subplots(figsize=fig_size)
+    fig, ax = plt.subplots(figsize=fig_size, constrained_layout=True)
 
     if single_sensitivity_results['sensitivity_method'] == 'l1norm':
         vcenter, vmin, vmax = 1, 0.1, 1.9
@@ -157,5 +157,5 @@ def conditional_heatmap_standardized(
                 ax.text(c, r, "99.9+", ha='center', va='center', color='k', fontsize=font_size-2)
             else:
                 ax.text(c, r, f"{value:.1f}", ha='center', va='center', color='k', fontsize=font_size-2)
-
-    plt.show()
+    
+    return fig

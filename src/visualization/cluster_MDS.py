@@ -12,7 +12,7 @@ def cluster_MDS(
     fig_size: tuple = (8, 6),
     font_size: int = 12,
     font: str = None
-    ) -> np.ndarray:
+    ) -> tuple[plt.Figure, plt.Figure]:
     """
     Perform multidimensional scaling (MDS) on the distance matrix to plot (1) clusters in 2D space and (2) stress scores across dimensions.
 
@@ -44,7 +44,11 @@ def cluster_MDS(
         If None, matplotlib default is used.
               
     Returns:
-    Plots of (1) clusters in 2D space and (2) stress scores across dimensions.
+    -------
+    tuple[plt.Figure, plt.Figure]
+        A tuple containing two figures:
+        (1) MDS plot of clusters in 2D space
+        (2) Stress scores across dimensions
     """
     dimensions = list(range(1, stress_score_output_dimensions + 1))
     stress_scores = []
@@ -76,10 +80,10 @@ def cluster_MDS(
         plt.rcParams['font.family'] = font
 
     # plot MDS for each cluster
-    plt.figure(figsize = fig_size)
+    fig_mds, ax_mds = plt.subplots(figsize = fig_size, constrained_layout=True)
     for i, cluster_id in enumerate(unique_clusters):
         cluster_data = df[df['cluster'] == cluster_id]
-        plt.scatter(
+        ax_mds.scatter(
             cluster_data['Dimension 1'],
             cluster_data['Dimension 2'],
             color=cmap(i),
@@ -89,22 +93,20 @@ def cluster_MDS(
             alpha=0.8
         )
 
-    plt.xlabel('Dimension 1', fontsize=font_size)
-    plt.ylabel('Dimension 2', fontsize=font_size)
-    plt.title('MDS of Response Clusters', fontsize=font_size + 2)
-    # plt.legend(title="Clusters", loc='upper right')
-    plt.legend(fontsize=font_size - 2)
-    plt.grid(True, linestyle='--', alpha=0.6)
-    plt.tight_layout()
-    plt.show()
+    ax_mds.set_xlabel('Dimension 1', fontsize=font_size)
+    ax_mds.set_ylabel('Dimension 2', fontsize=font_size)
+    ax_mds.set_title('MDS of Response Clusters', fontsize=font_size + 2)
+    # ax_mds.legend(title="Clusters", loc='upper right')
+    ax_mds.legend(fontsize=font_size - 2)
+    ax_mds.grid(True, linestyle='--', alpha=0.6)
 
     # plot stress scores
-    plt.figure(figsize = fig_size)
-    plt.plot(dimensions, stress_scores, marker='o', linestyle='-', color='b')
-    plt.xlabel('Number of Dimensions', fontsize=font_size)
-    plt.ylabel('Stress Score', fontsize=font_size)
-    plt.title('Stress Scores for Different Dimensions', fontsize=font_size + 2)
-    plt.grid(True, linestyle='--', alpha=0.6)
-    plt.tight_layout()
-    plt.show()
+    fig_stress_score, ax_stress_score = plt.subplots(figsize = fig_size, constrained_layout=True)
+    ax_stress_score.plot(dimensions, stress_scores, marker='o', linestyle='-', color='b')
+    ax_stress_score.set_xlabel('Number of Dimensions', fontsize=font_size)
+    ax_stress_score.set_ylabel('Stress Score', fontsize=font_size)
+    ax_stress_score.set_title('Stress Scores for Different Dimensions', fontsize=font_size + 2)
+    ax_stress_score.grid(True, linestyle='--', alpha=0.6)
+    
+    return fig_mds, fig_stress_score
 
