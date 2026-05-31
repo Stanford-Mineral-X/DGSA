@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "dgsa"
+version = "0.1.0"
+description = "Distance-based Generalized Sensitivity Analysis"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "scipy",
+    "scikit_learn",
+    "cmcrameri",      
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
