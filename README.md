@@ -28,19 +28,51 @@ Below are example plots produced using the included sample dataset:
 <img src="results/Park2016_conditional_CDF.tiff" width="500" alt="Conditional CDF plot">
 <img src="results/Park2016_MDS.tiff" width="500" alt="MDS cluster plot">
 
+## Installation
+
+### Requirements
+- Python >= 3.10
+
+### Required Packages
+| Package | Purpose |
+|---------|---------|
+| `numpy` | Numerical computations |
+| `pandas` | Data loading and manipulation |
+| `matplotlib` | Plotting and visualization |
+| `scipy` | Statistical fitting and bootstrap |
+| `scikit-learn` | MDS for clustering visualization |
+| `cmcrameri` | Perceptually uniform colormaps |
+
+### Install
+Clone the repository:
+```bash
+git clone https://github.com/<your-username>/DGSA.git
+cd DGSA
+```
+Then install using one of the following:
+```bash
+# For regular use
+pip install .
+
+# For development (changes to source code take effect immediately)
+pip install -e .
+```
 
 ## How to Use
 
-1. **Explore the Example Notebooks**  
+1. **Install the package**  
+   Follow the Installation instructions above before running any notebooks.
+
+2. **Explore the Example Notebooks**  
    Run the Jupyter notebooks included in this repository to learn the DGSA workflow (computation and visualization) using the provided example dataset.
 
-2. **Prepare Your Own Data**  
+3. **Prepare Your Own Data**  
    Format your inputs to match the example files:
    - **Parameter file:** a CSV containing model parameters.
    - **Response file:** either a CSV of responses or a **distance matrix** CSV.  
    Ensure the column structure and file format follow the examples.
 
-3. **Run DGSA with Your Data**  
+4. **Run DGSA with Your Data**  
    Replace the example data paths in the notebooks with your own files and adjust any DGSA settings as needed.
 
 ## Repository Structure
@@ -55,27 +87,40 @@ repo_root
 │   ├── DGSA_computation_Park2016.ipynb
 │   └── DGSA_visualization_Park2016.ipynb
 ├── results
-│   ├── Park2016_conditional_ASL.png
-│   ├── Park2016_conditional_CDF.png
 │   ├── Park2016_DGSA_results.pkl
-│   ├── Park2016_MDS.png
-│   ├── Park2016_single_ASL.png
-│   └── Park2016_single_l1norm.png
+│   ├── Park2016_MDS.tiff
+│   ├── Park2016_conditional_ASL.tiff
+│   ├── Park2016_conditional_CDF.tiff
+│   ├── Park2016_conditional_l1norm.tiff
+│   ├── Park2016_single_ASL.tiff
+│   └── Park2016_single_l1norm.tiff
 ├── src
-│   ├── computation
-│   │   ├── conditional_parameter_sensitivity.py
-│   │   ├── kmedoids.py
-│   │   └── single_parameter_sensitivity.py
-│   ├── utils
-│   │   └── DGSA_save_load.py
-│   └── visualization
-│       ├── cluster_MDS.py
-│       ├── conditional_cdf.py
-│       ├── conditional_heatmap.py
-│       ├── single_cdf.py
-│       └── single_pareto.py
+│   └── dgsa
+│       ├── computation
+│       │   ├── conditional_parameter_sensitivity.py
+│       │   ├── kmedoids.py
+│       │   └── single_parameter_sensitivity.py
+│       ├── utils
+│       │   └── dgsa_save_load.py
+│       └── visualization
+│           ├── cluster_mds.py
+│           ├── conditional_cdf.py
+│           ├── conditional_heatmap.py
+│           ├── conditional_pareto.py
+│           ├── single_cdf.py
+│           └── single_pareto.py
+├── tests
+│   ├── fixtures
+│   │   ├── Park2016_DGSA_results.pkl
+│   │   ├── Park2016_distance_matrix.csv
+│   │   └── Park2016_parameters.csv
+│   ├── conftest.py
+│   ├── test_clustering.py
+│   ├── test_conditional_sensitivity.py
+│   └── test_single_sensitivity.py
 ├── .gitignore
 ├── LICENSE
+├── pyproject.toml
 └── README.md
 ```
 ## Acknowledgements
