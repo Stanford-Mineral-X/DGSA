@@ -137,8 +137,10 @@ def conditional_parameter_sensitivity(
                             l1norm_distance_observed[p, cond_param_idx, c, b], boot_distance_samples[p, cond_param_idx, c, b, :])
 
         # Compute standardized sensitivity by finding max ASL values (more informative than mean ASL)
-        ASL_sensitivity_by_cluster = np.nanmax(ASL_sensitivity_by_cluster_and_bin, axis=3) # array shape (n_parameter,n_parameter,n_cluster)
-        ASL_sensitivity_standardized = np.nanmax(ASL_sensitivity_by_cluster, axis=2) # array shape (n_parameter,n_parameter)
+        with warnings.catch_warnings(): # Suppress the warning about all-NaN slices in the diagonal
+            warnings.simplefilter("ignore", category=RuntimeWarning)
+            ASL_sensitivity_by_cluster = np.nanmax(ASL_sensitivity_by_cluster_and_bin, axis=3) # array shape (n_parameter,n_parameter,n_cluster)
+            ASL_sensitivity_standardized = np.nanmax(ASL_sensitivity_by_cluster, axis=2) # array shape (n_parameter,n_parameter)
         # ASL_sensitivity_by_cluster = np.nanmean(ASL_sensitivity_by_cluster_and_bin, axis=3) # array shape (n_parameter,n_parameter,n_cluster)
         # ASL_sensitivity_standardized = np.nanmean(ASL_sensitivity_by_cluster, axis=2) # array shape (n_parameter,n_parameter)
         # perform hypothesis test to determine if a parameter is sensitive or not

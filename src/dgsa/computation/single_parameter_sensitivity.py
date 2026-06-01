@@ -249,7 +249,7 @@ def compute_ASL(
 
     # check for nans
     if np.isnan(l1norm_distance_observed) or np.all(np.isnan(l1norm_distance_bootstrapped)):
-        ASL_value = np.nan
+        return np.nan
 
     # calculate the proportion of bootstrapped <= observed (empirical CDF)
     ASL_value = np.mean(l1norm_distance_bootstrapped <= l1norm_distance_observed)
