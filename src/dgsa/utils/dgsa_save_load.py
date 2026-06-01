@@ -7,7 +7,7 @@ import pickle
 from pathlib import Path
 from typing import Dict, Union, Optional
 
-def DGSA_save(dgsa_results: Dict, 
+def dgsa_save(dgsa_results: Dict, 
               filepath: Union[str, Path], 
               use_numpy: bool = False) -> None:
     """
@@ -40,7 +40,7 @@ def DGSA_save(dgsa_results: Dict,
         with open(filepath, 'wb') as f:
             pickle.dump(dgsa_results, f)
 
-def DGSA_load(filepath: Union[str, Path]) -> Dict:
+def dgsa_load(filepath: Union[str, Path]) -> Dict:
     """
     Load DGSA results from a file.
 

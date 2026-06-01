@@ -1,6 +1,6 @@
 [build-system]
 requires = ["setuptools>=64"]
-build-backend = "setuptools.backends.build_meta"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "dgsa"
@@ -14,7 +14,7 @@ dependencies = [
     "pandas",
     "matplotlib",
     "scipy",
-    "scikit_learn",
+    "scikit-learn",
     "cmcrameri",      
 ]
 

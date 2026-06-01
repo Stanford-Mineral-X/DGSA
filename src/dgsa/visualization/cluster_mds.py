@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.manifold import MDS
 from sklearn.metrics import pairwise_distances
 
-def cluster_MDS(
+def cluster_mds(
     distance_matrix: NDArray[np.float64], 
     clustering: dict,
     stress_score_output_dimensions: int,

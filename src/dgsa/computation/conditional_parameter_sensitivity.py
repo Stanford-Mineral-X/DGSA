@@ -7,7 +7,7 @@ Based upon the work of Celine Scheidt and Jihoon Park
 from numpy.typing import NDArray
 import numpy as np
 import warnings
-from computation.single_parameter_sensitivity import compute_ASL
+from dgsa.computation.single_parameter_sensitivity import compute_ASL
 
 def conditional_parameter_sensitivity(
         parameter_values: NDArray[np.float64], 
