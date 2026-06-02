@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Stanford Mineral-X
+# Licensed under the MIT License — see LICENSE file in the root of this repository for details.
 """
 Plot CDFs of parameters for each cluster.
 Based upon the work of Celine Scheidt and Jihoon Park.

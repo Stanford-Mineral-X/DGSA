@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Stanford Mineral-X
+# Licensed under the MIT License — see LICENSE file in the root of this repository for details.
 """
 Plot conditional CDFs of parameters based on conditioning parameters within a cluster.
 Based upon the work of Celine Scheidt and Jihoon Park.

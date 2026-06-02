@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Stanford Mineral-X
+# Licensed under the MIT License — see LICENSE file in the root of this repository for details.
 """
 Perform k-medoid clustering on a distance matrix.
 Based upon the work of Celine Scheidt.
