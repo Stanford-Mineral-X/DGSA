@@ -37,13 +37,14 @@ def park2016():
     parameter_names = ref["parameter_names"]
     clustering = ref["clustering"]  # use reference clustering for sensitivity tests
 
-    # Re-run kmedoids (no random_seed — kmedoids uses np.random.choice)
+    # Re-run kmedoids with fixed random_seed for reproducibility
     # We compare against the reference cluster_assignments in test_clustering.py
     clustering_rerun = kmedoids(
         distance_matrix=distance_matrix,
         n_clusters=3,
         n_rep=5,
         max_iterations=50,
+        random_seed=100,
     )
 
     # Re-run single sensitivity with same parameters as notebook

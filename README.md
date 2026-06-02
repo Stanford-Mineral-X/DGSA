@@ -46,7 +46,7 @@ Below are example plots produced using the included sample dataset:
 ### Install
 Clone the repository:
 ```bash
-git clone https://github.com/<your-username>/DGSA.git
+git clone https://github.com/Stanford-Mineral-X/DGSA.git
 cd DGSA
 ```
 Then install using one of the following:

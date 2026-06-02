@@ -13,6 +13,7 @@ def kmedoids(
         n_clusters: int = 3,
         n_rep: int = 5,
         max_iterations: int = 50,
+        random_seed: int | None = None,
         ) -> dict:
     """
     Perform k-medoids clustering on a distance matrix.
@@ -30,7 +31,10 @@ def kmedoids(
         
     max_iterations : int, default = 50
         Maximum number of iterations to perform
-    
+
+    random_seed : int | None, default = None
+        Random seed for reproducibility of medoid initialisation.
+
     Returns
     -------
     Results of the kmedoids clustering: dict
@@ -44,15 +48,16 @@ def kmedoids(
     
     n_points = distance_matrix.shape[0]
     min_dist_best = np.inf
-    
+    rng = np.random.default_rng(random_seed)
+
     # Variables to store best configuration
     label_best = None
     current_medoids_best = None
 
     # perform medoids clustering
-    for iter in range(n_rep): 
+    for iter in range(n_rep):
         # 1. Initialize: randomly select n_clusters points as the medoids
-        init_medoids = np.random.choice(n_points, size=n_clusters, replace=False)
+        init_medoids = rng.choice(n_points, size=n_clusters, replace=False)
         
         # 2. Associate each data point to the closest medoid
         min_dist_init = distance_matrix[init_medoids].min(axis=0)
