@@ -155,10 +155,12 @@ def conditional_heatmap_standardized(
     # add text values
     if show_values:
         for (r, c), value in np.ndenumerate(sorted_sensitivity):
-            if value>99.9:
-                ax.text(c, r, "99.9+", ha='center', va='center', color='k', fontsize=font_size-2)
-            else:
-                ax.text(c, r, f"{value:.1f}", ha='center', va='center', color='k', fontsize=font_size-2)
+            # Pick text color based on background luminance for readability
+            rgba = cm.vik(norm(value))
+            luminance = 0.2126 * rgba[0] + 0.7152 * rgba[1] + 0.0722 * rgba[2]
+            text_color = 'w' if luminance < 0.5 else 'k'
+            label = "99.9+" if value > 99.9 else f"{value:.1f}"
+            ax.text(c, r, label, ha='center', va='center', color=text_color, fontsize=font_size-2)
     
     fig.tight_layout()
     
