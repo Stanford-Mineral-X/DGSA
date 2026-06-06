@@ -1,4 +1,5 @@
 # Distance-based Generalized Sensitivity Analysis (DGSA)
+[![DOI](https://zenodo.org/badge/1096785197.svg)](https://doi.org/10.5281/zenodo.20574778)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview

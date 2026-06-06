@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Python Package for Distance-based Generalized Sensitivity Analysis (DGSA)"
+authors:
+  - family-names: Ding
+    given-names: Jihui
+  - family-names: Scheidt
+    given-names: Céline
+  - family-names: Li
+    given-names: Peng
+  - family-names: Yin
+    given-names: David Zhen
+  - family-names: Caers
+    given-names: Jef
+doi: 10.5281/zenodo.20574778
+version: 1.0.0
+date-released: 2026-6-6
+license: MIT
+repository-code: https://github.com/Stanford-Mineral-X/DGSA
