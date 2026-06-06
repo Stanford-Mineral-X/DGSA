@@ -1,5 +1,5 @@
 # Distance-based Generalized Sensitivity Analysis (DGSA)
-[![DOI](https://zenodo.org/badge/1096785197.svg)](https://doi.org/10.5281/zenodo.20574778)
+[![DOI](https://zenodo.org/badge/1096785197.svg)](https://doi.org/10.5281/zenodo.20574779)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
@@ -89,12 +89,12 @@ repo_root
 │   └── DGSA_visualization_Park2016.ipynb
 ├── results
 │   ├── Park2016_DGSA_results.pkl
-│   ├── Park2016_MDS.tiff
-│   ├── Park2016_conditional_ASL.tiff
-│   ├── Park2016_conditional_CDF.tiff
-│   ├── Park2016_conditional_l1norm.tiff
-│   ├── Park2016_single_ASL.tiff
-│   └── Park2016_single_l1norm.tiff
+│   ├── Park2016_MDS.png
+│   ├── Park2016_conditional_ASL.png
+│   ├── Park2016_conditional_CDF.png
+│   ├── Park2016_conditional_l1norm.png
+│   ├── Park2016_single_ASL.png
+│   └── Park2016_single_l1norm.png
 ├── src
 │   └── dgsa
 │       ├── computation
