@@ -71,7 +71,8 @@ pip install -e .
    Format your inputs to match the example files:
    - **Parameter file:** a CSV containing model parameters.
    - **Response file:** either a CSV of responses or a **distance matrix** CSV.  
-   Ensure the column structure and file format follow the examples.
+   Ensure the column structure and file format follow the examples.  
+   When providing a CSV of responses, set `scaling_method` in the computation notebook to `'raw'` (no scaling), `'minmax'` (each response scaled to [0, 1], default), or `'zscore'` (each response scaled to mean 0, std 1) before the euclidean distance matrix is computed.
 
 4. **Run DGSA with Your Data**  
    Replace the example data paths in the notebooks with your own files and adjust any DGSA settings as needed.
@@ -102,7 +103,8 @@ repo_root
 │       │   ├── kmedoids.py
 │       │   └── single_parameter_sensitivity.py
 │       ├── utils
-│       │   └── dgsa_save_load.py
+│       │   ├── dgsa_save_load.py
+│       │   └── scaling.py
 │       └── visualization
 │           ├── cluster_mds.py
 │           ├── conditional_cdf.py
@@ -118,6 +120,7 @@ repo_root
 │   ├── conftest.py
 │   ├── test_clustering.py
 │   ├── test_conditional_sensitivity.py
+│   ├── test_scaling.py
 │   └── test_single_sensitivity.py
 ├── .gitignore
 ├── CONTRIBUTING.md

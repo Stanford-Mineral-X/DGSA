@@ -13,7 +13,7 @@ authors:
   - family-names: Caers
     given-names: Jef
 doi: 10.5281/zenodo.20574778
-version: 1.0.0
+version: 1.1.0
 date-released: 2026-6-6
 license: MIT
 repository-code: https://github.com/Stanford-Mineral-X/DGSA

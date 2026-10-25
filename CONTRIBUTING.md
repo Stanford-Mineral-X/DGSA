@@ -13,7 +13,8 @@ src/dgsa/
 │   ├── single_parameter_sensitivity.py      # Single-parameter sensitivity (l1norm and ASL)
 │   └── conditional_parameter_sensitivity.py # Conditional (two-way) sensitivity
 ├── utils/
-│   └── dgsa_save_load.py                    # Save and load DGSA results
+│   ├── dgsa_save_load.py                    # Save and load DGSA results
+│   └── scaling.py                           # Scale model responses (raw, minmax, zscore)
 └── visualization/     # Plotting functions
     ├── cluster_mds.py         # MDS cluster plot
     ├── single_cdf.py          # CDF plots for single sensitivity
@@ -55,11 +56,12 @@ Tests live in `tests/` and use `pytest`.
   ```bash
   pytest -v
   ```
-- **All 13 tests must pass** with no new failures introduced.
+- **All 19 tests must pass** with no new failures introduced.
 - **Adding new functionality:** add a corresponding test in the appropriate file:
   - `tests/test_clustering.py` — clustering logic
   - `tests/test_single_sensitivity.py` — single parameter sensitivity
   - `tests/test_conditional_sensitivity.py` — conditional parameter sensitivity
+  - `tests/test_scaling.py` — response scaling
 - **Reference fixtures** are stored in `tests/fixtures/`. If you change output format or computation logic, update the fixtures accordingly and document why in your PR.
 - **Tolerance:** numerical tests use `rtol=0.10` for sensitivity values due to bootstrap variance. Do not tighten this without justification.
 
